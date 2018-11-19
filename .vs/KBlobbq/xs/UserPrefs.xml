@@ -1,8 +1,9 @@
 ﻿<Properties StartupConfiguration="{2DB63FF1-DC92-DF57-D9A9-D69C4888DD8A}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/StartButton.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/GamePlay.cs">
     <Files>
-      <File FileName="Assets/StartButton.cs" Line="14" Column="3" />
+      <File FileName="Assets/GamePlay.cs" Line="10" Column="5" />
+      <File FileName="Assets/TakeControl.cs" Line="10" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

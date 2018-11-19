@@ -8,9 +8,9 @@ public class StartButton : MonoBehaviour {
 	void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    private void OnMouseDown()
+    {
+        print("clicked");
+    }
 }
