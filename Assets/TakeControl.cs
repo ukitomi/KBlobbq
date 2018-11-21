@@ -4,31 +4,33 @@ using UnityEngine;
 
 public class TakeControl : MonoBehaviour {
 
+    // first food stack
     public Transform obj1;
+    // second food stack
     public Transform obj2;
-    private Vector3 screenPoint;
-    private Vector3 offset;
-    public Transform food1;
-    public Transform food2;
+    // the food item that's being drag and drop for cooking
+    private Transform food1;
+    // ??
+    private Transform cookedfood;
+    // object name of the drag and drop raw food, so we know what kinds of food we are making
     public GameObject objname;
+    // the spawn and finished food, we probably need three more since our plates have 3 slots...
+    public GameObject spawn1;
+
 
 	// Use this for initialization
     void Start () {
+
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (objname.name.Contains("grabbedfood1")) {
-            print("food1");
-        }
-        else if (objname.name.Contains("grabbedfood2")) {
-            print("food2");
-        }
         
     }
 
     void OnMouseDown()
     {
+        // food item 1
         if (gameObject.name == "foodimage1") {
             food1 = Instantiate(obj1, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
             objname = food1.gameObject;
@@ -38,6 +40,7 @@ public class TakeControl : MonoBehaviour {
             newPosition.z = 10;
             food1.transform.position = newPosition;
         }
+        // food item 2
         else if (gameObject.name == "foodimage2") {
             food1 = Instantiate(obj2, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
             objname = food1.gameObject;
@@ -47,7 +50,6 @@ public class TakeControl : MonoBehaviour {
             newPosition.z = 10;
             food1.transform.position = newPosition;
         }
-
     }
 
     private void OnMouseDrag()
@@ -62,21 +64,30 @@ public class TakeControl : MonoBehaviour {
 
     private void OnMouseUp()
     {
-        // the range here determines where player drop the food
+        // the range here determines where player drop the food, customizable
         // -2 <= x <= 5
         // -4 <= y <= 2
         if (food1.transform.position.x >= -2 && food1.transform.position.x <= 5 &&
                 food1.transform.position.y >= -4 && food1.transform.position.y <= 2) {
+            Vector3 position = food1.position;
             food1.GetComponent<SpriteRenderer>().enabled = false;
             Destroy(food1.gameObject);
+            // instantiate something after 5 seconds at certain position..
+            if (objname.name.Contains("grabbedfood1")) {
+                print("instantiating...");
+                // wait for 5 seconds here
+                StartCoroutine(cookandburn(spawn1, position));
+                // if the item is not picked up by 5 seconds, then it will turn into a burned food
+            }
         }
-        //if (food2.transform.position.x >= -2 && food2.transform.position.x <= 5 &&
-        //        food2.transform.position.y >= -4 && food2.transform.position.y <= 2)
-        //{
-        //    food2.GetComponent<SpriteRenderer>().enabled = false;
-        //    Destroy(food2.gameObject);
-        //}
+    }
 
+    public IEnumerator cookandburn(GameObject obj, Vector3 position) {
+
+        yield return new WaitForSeconds(2);
+        Instantiate(spawn1, new Vector3(position.x, position.y - 5, position.z), Quaternion.identity);
+
+        // if doesn't get pick up by customer within the next 5 seconds, turn it to a burn food.
     }
 
 
