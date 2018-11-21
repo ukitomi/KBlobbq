@@ -8,78 +8,76 @@ public class TakeControl : MonoBehaviour {
     public Transform obj2;
     private Vector3 screenPoint;
     private Vector3 offset;
-    private Transform grabbedFood;
+    public Transform food1;
+    public Transform food2;
+    public GameObject objname;
 
 	// Use this for initialization
     void Start () {
-        //Ctext.GetComponent<BoxCollider2D>().enabled = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        print(gameObject.name);
-        //if (Input.GetMouseButtonDown(0) && gameObject.name == "foodimage1")
-        //{
-        //    //grabbedFood = Instantiate(obj1, transform.position, transform.rotation);
-        //    grabbedFood = Instantiate(obj1, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
-        //    // cannot do grabbedFood.transform.position.z = 10 because of struct properties.
-        //    Vector3 newPosition = grabbedFood.position;
-        //    newPosition.z = 10;
-        //    grabbedFood.transform.position = newPosition;
-        //    //grabbedFood.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //}
-        //if (Input.GetMouseButton(0) && grabbedFood) {
-        //    grabbedFood.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //}
-        //if (Input.GetMouseButtonUp(0) && grabbedFood) {
-        //    grabbedFood = null;
-        //}
-
+        if (objname.name.Contains("grabbedfood1")) {
+            print("food1");
+        }
+        else if (objname.name.Contains("grabbedfood2")) {
+            print("food2");
+        }
+        
     }
 
     void OnMouseDown()
     {
-        if (gameObject.name == "foodimage1")
-        {
-            //grabbedFood = Instantiate(obj1, transform.position, transform.rotation);
-            //offset = grabbedFood.transform.position -
-            //    Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f));
-
-            //print(offset);
-            grabbedFood = Instantiate(obj1, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
+        if (gameObject.name == "foodimage1") {
+            food1 = Instantiate(obj1, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
+            objname = food1.gameObject;
             // cannot do grabbedFood.transform.position.z = 10 because of struct properties.
-            Vector3 newPosition = grabbedFood.position;
+            food1.GetComponent<SpriteRenderer>().enabled = true;
+            Vector3 newPosition = food1.position;
             newPosition.z = 10;
-            grabbedFood.transform.position = newPosition;
+            food1.transform.position = newPosition;
+        }
+        else if (gameObject.name == "foodimage2") {
+            food1 = Instantiate(obj2, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
+            objname = food1.gameObject;
+            food1.GetComponent<SpriteRenderer>().enabled = true;
+            // cannot do grabbedFood.transform.position.z = 10 because of struct properties.
+            Vector3 newPosition = food1.position;
+            newPosition.z = 10;
+            food1.transform.position = newPosition;
         }
 
     }
 
     private void OnMouseDrag()
     {
-        if (grabbedFood) {
-            print("dragging");
-            grabbedFood.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 newPosition = grabbedFood.position;
+        if (food1 != null) {
+            food1.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 newPosition = food1.position;
             newPosition.z = 10;
-            grabbedFood.transform.position = newPosition;
+            food1.transform.position = newPosition;
         }
     }
 
-    //void OnMouseDrag()
-    //{
-    //    //if (gameObject.name == "grabbedfood") {
-    //    //    Vector3 newPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10.0f);
-    //    //    grabbedFood.position = Camera.main.ScreenToWorldPoint(newPosition) + offset;
-    //    //}
+    private void OnMouseUp()
+    {
+        // the range here determines where player drop the food
+        // -2 <= x <= 5
+        // -4 <= y <= 2
+        if (food1.transform.position.x >= -2 && food1.transform.position.x <= 5 &&
+                food1.transform.position.y >= -4 && food1.transform.position.y <= 2) {
+            food1.GetComponent<SpriteRenderer>().enabled = false;
+            Destroy(food1.gameObject);
+        }
+        //if (food2.transform.position.x >= -2 && food2.transform.position.x <= 5 &&
+        //        food2.transform.position.y >= -4 && food2.transform.position.y <= 2)
+        //{
+        //    food2.GetComponent<SpriteRenderer>().enabled = false;
+        //    Destroy(food2.gameObject);
+        //}
 
-    //}
+    }
 
-    //private void OnMouseDown()
-    //{
-    //    if (gameObject.name == "foodimage1")
-    //    {
-    //        Instantiate(obj1, transform.position, transform.rotation);
-    //    }
-    //}
+
 }
