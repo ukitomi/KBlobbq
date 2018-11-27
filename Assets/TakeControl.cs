@@ -5,90 +5,116 @@ using UnityEngine;
 public class TakeControl : MonoBehaviour {
 
     // first food stack
-    public Transform obj1;
+    public Transform raw1;
     // second food stack
-    public Transform obj2;
+    public Transform raw2;
+    // the cooked food item 1
+    public Transform cooked1;
+    // the cooked food item 1
+    public Transform cooked2;
+    // the cooked food item 1
+    public Transform burned1;
+    // the cooked food item 1
+    public Transform burned2;
+
+    public Transform orderblob1;
+    public Transform orderblob2;
+
     // the food item that's being drag and drop for cooking
-    private Transform food1;
-    // ??
-    private Transform cookedfood;
-    // object name of the drag and drop raw food, so we know what kinds of food we are making
-    public GameObject objname;
-    // the spawn and finished food, we probably need three more since our plates have 3 slots...
-    public GameObject spawn1;
+    // create an arraylist to store the gameobjects....
+    public Transform food1;
+    // the second food item
+    public Transform food2;
+
+    // from customerOrder side
+    public GameObject gm;
+    public customerOrder corder;
+    public List<GameObject[]> list;
 
 
-	// Use this for initialization
+    // custom range for random spawn location
+    public float MinX = -7;
+    public float MaxX = 3;
+    public float MinY = -7;
+    public float MaxY = 3;
+
+    GameObject[] clone;
+    // Use this for initialization
     void Start () {
+        gm = GameObject.Find("GM");
+        corder = gm.GetComponent<customerOrder>();
+        //list = corder.allOrders;
+        
+
+        // try to get the order[0] from customerOrder.cs, and remove one of the gameobject 
+        //GameObject[] curlist = list[0];
+        ////print("0: " + curlist[0]);
+        ////print("1: " + curlist[1]);
+        //StartCoroutine(DestroyObjects(curlist));
+
+        // alarm the customerOrder's orderlist, search each array and find if there's corresponding elements
+        // if there is, remove
+        // Q: How does one order know it's completed?
+        // when one order is completed, it will be removed from the list and add points ...
 
     }
-	
-	// Update is called once per frame
-	void Update () {
-        
+
+    // Update is called once per frame
+    void Update () {
+
     }
 
     void OnMouseDown()
     {
         // food item 1
-        if (gameObject.name == "foodimage1") {
-            food1 = Instantiate(obj1, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
-            objname = food1.gameObject;
-            // cannot do grabbedFood.transform.position.z = 10 because of struct properties.
-            food1.GetComponent<SpriteRenderer>().enabled = true;
-            Vector3 newPosition = food1.position;
-            newPosition.z = 10;
-            food1.transform.position = newPosition;
+        if (gameObject.name == "blobraw1") {
+            StartCoroutine(cookandburn("blobraw1"));
         }
         // food item 2
-        else if (gameObject.name == "foodimage2") {
-            food1 = Instantiate(obj2, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
-            objname = food1.gameObject;
-            food1.GetComponent<SpriteRenderer>().enabled = true;
-            // cannot do grabbedFood.transform.position.z = 10 because of struct properties.
-            Vector3 newPosition = food1.position;
-            newPosition.z = 10;
-            food1.transform.position = newPosition;
+        else if (gameObject.name == "blobraw2") {
+            StartCoroutine(cookandburn("blobraw2"));
         }
+        else if (gameObject.name.Contains("blobcooked1")) {
+            Destroy(gameObject);
+            corder.SearchandRemove(gameObject);
+        }
+        else if (gameObject.name.Contains("blobcooked2")) {
+            Destroy(gameObject);
+            corder.SearchandRemove(gameObject);
+        }
+        // if the tag is "rawblob"
+        // and the name is orderblob1
+        // then remove it.
+        //else if (gameObject.name.Contains("orderblob1") && gameObject.tag == "rawblob") {
+        //    Destroy(gameObject);
+        //    print("destroyed");
+        //}
     }
 
-    private void OnMouseDrag()
-    {
-        if (food1 != null) {
-            food1.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 newPosition = food1.position;
-            newPosition.z = 10;
-            food1.transform.position = newPosition;
-        }
-    }
 
-    private void OnMouseUp()
-    {
-        // the range here determines where player drop the food, customizable
-        // -2 <= x <= 5
-        // -4 <= y <= 2
-        if (food1.transform.position.x >= -2 && food1.transform.position.x <= 5 &&
-                food1.transform.position.y >= -4 && food1.transform.position.y <= 2) {
-            Vector3 position = food1.position;
-            food1.GetComponent<SpriteRenderer>().enabled = false;
-            Destroy(food1.gameObject);
-            // instantiate something after 5 seconds at certain position..
-            if (objname.name.Contains("grabbedfood1")) {
-                print("instantiating...");
-                // wait for 5 seconds here
-                StartCoroutine(cookandburn(spawn1, position));
-                // if the item is not picked up by 5 seconds, then it will turn into a burned food
-            }
-        }
-    }
-
-    public IEnumerator cookandburn(GameObject obj, Vector3 position) {
+    public IEnumerator cookandburn(string rawFoodName) {
+        float x = Random.Range(MinX, MaxX);
+        float y = Random.Range(MinY, MaxY);
 
         yield return new WaitForSeconds(2);
-        Instantiate(spawn1, new Vector3(position.x, position.y - 5, position.z), Quaternion.identity);
+        if (rawFoodName == "blobraw1") {
+            food1 = Instantiate(cooked1, new Vector3(x, y, 10), Quaternion.identity);
+        }
+        else if (rawFoodName== "blobraw2") {
+            food1 = Instantiate(cooked2, new Vector3(x, y, 10), Quaternion.identity);
+
+        }
+        //StopCoroutine(cookandburn(rawFoodName, position));
+
 
         // if doesn't get pick up by customer within the next 5 seconds, turn it to a burn food.
     }
 
+    public IEnumerator DestroyObjects(GameObject[] list) {
+        yield return new WaitForSeconds(1);
+        for (int i = 0; i < list.Length; i++) {
+            Destroy(list[i]);
+        }
 
+    }
 }
