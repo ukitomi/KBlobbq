@@ -1,36 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using UnityEngine;
 
 public class TakeControl : MonoBehaviour {
 
-    // first food stack
+    // food stacks
     public Transform raw1;
-    // second food stack
     public Transform raw2;
-    // the cooked food item 1
+    public Transform raw3;
+    public Transform raw4;
+    public Transform raw5;
+
+    // cooked items
     public Transform cooked1;
-    // the cooked food item 1
     public Transform cooked2;
-    // the cooked food item 1
+    public Transform cooked3;
+    public Transform cooked4;
+    public Transform cooked5;
+
+    // burned items
     public Transform burned1;
-    // the cooked food item 1
     public Transform burned2;
-
-    public Transform orderblob1;
-    public Transform orderblob2;
-
-    // the food item that's being drag and drop for cooking
-    // create an arraylist to store the gameobjects....
-    public Transform food1;
-    // the second food item
-    public Transform food2;
+    public Transform burned3;
+    public Transform burned4;
+    public Transform burned5;
 
     // from customerOrder side
     public GameObject gm;
     public customerOrder corder;
-    public List<GameObject[]> list;
-
 
     // custom range for random spawn location
     public float MinX = -7;
@@ -38,26 +36,43 @@ public class TakeControl : MonoBehaviour {
     public float MinY = -7;
     public float MaxY = 3;
 
-    GameObject[] clone;
+    // cooktime and burntime adjusted by level
+    public static float cooktime;
+    public static float burntime;
+    public static string level;
+
+    // hard level list
+    public static List<string> list;
+
+
     // Use this for initialization
     void Start () {
         gm = GameObject.Find("GM");
         corder = gm.GetComponent<customerOrder>();
-        //list = corder.allOrders;
-        
 
-        // try to get the order[0] from customerOrder.cs, and remove one of the gameobject 
-        //GameObject[] curlist = list[0];
-        ////print("0: " + curlist[0]);
-        ////print("1: " + curlist[1]);
-        //StartCoroutine(DestroyObjects(curlist));
+        // for hard level shuffling
+        if (level == "hard") {
+            raw1.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("mysteryblob");
+            raw2.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("mysteryblob");
+            raw3.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("mysteryblob");
+            raw4.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("mysteryblob");
+            raw5.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("mysteryblob");
 
-        // alarm the customerOrder's orderlist, search each array and find if there's corresponding elements
-        // if there is, remove
-        // Q: How does one order know it's completed?
-        // when one order is completed, it will be removed from the list and add points ...
+            cooked1.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(list[0]);
+            cooked2.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(list[1]);
+            cooked3.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(list[2]);
+            cooked4.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(list[3]);
+            cooked5.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(list[4]);
+        }
 
+        //for (int i = 0; i < list.Count; i++) {
+        //    print("list elt: " + list[i]);
+        //}
+        // set each raw sprite to mystery blob
+        // randomized each cooked sprite
+        // we dont need to care about burned
     }
+
 
     // Update is called once per frame
     void Update () {
@@ -69,52 +84,134 @@ public class TakeControl : MonoBehaviour {
         // food item 1
         if (gameObject.name == "blobraw1") {
             StartCoroutine(cookandburn("blobraw1"));
+            gameObject.GetComponent<AudioSource>().Play();
         }
         // food item 2
         else if (gameObject.name == "blobraw2") {
             StartCoroutine(cookandburn("blobraw2"));
+            gameObject.GetComponent<AudioSource>().Play();
+        }
+        else if (gameObject.name == "blobraw3")
+        {
+            StartCoroutine(cookandburn("blobraw3"));
+            gameObject.GetComponent<AudioSource>().Play();
+        }
+        else if (gameObject.name == "blobraw4")
+        {
+            StartCoroutine(cookandburn("blobraw4"));
+            gameObject.GetComponent<AudioSource>().Play();
+        }
+        else if (gameObject.name == "blobraw5")
+        {
+            StartCoroutine(cookandburn("blobraw5"));
+            gameObject.GetComponent<AudioSource>().Play();
         }
         else if (gameObject.name.Contains("blobcooked1")) {
-            Destroy(gameObject);
-            corder.SearchandRemove(gameObject);
+            if(corder.SearchandRemove(gameObject)) {
+                Destroy(gameObject);
+            };
         }
         else if (gameObject.name.Contains("blobcooked2")) {
-            Destroy(gameObject);
-            corder.SearchandRemove(gameObject);
+            if (corder.SearchandRemove(gameObject)) {
+                Destroy(gameObject);
+            }
         }
-        // if the tag is "rawblob"
-        // and the name is orderblob1
-        // then remove it.
-        //else if (gameObject.name.Contains("orderblob1") && gameObject.tag == "rawblob") {
-        //    Destroy(gameObject);
-        //    print("destroyed");
-        //}
+        else if (gameObject.name.Contains("blobcooked3"))
+        {
+            if (corder.SearchandRemove(gameObject))
+            {
+                Destroy(gameObject);
+            }
+        }
+        else if (gameObject.name.Contains("blobcooked4"))
+        {
+            if (corder.SearchandRemove(gameObject))
+            {
+                Destroy(gameObject);
+            }
+        }
+        else if (gameObject.name.Contains("blobcooked5"))
+        {
+            if (corder.SearchandRemove(gameObject))
+            {
+                Destroy(gameObject);
+            }
+        }
     }
-
 
     public IEnumerator cookandburn(string rawFoodName) {
         float x = Random.Range(MinX, MaxX);
         float y = Random.Range(MinY, MaxY);
 
-        yield return new WaitForSeconds(2);
-        if (rawFoodName == "blobraw1") {
-            food1 = Instantiate(cooked1, new Vector3(x, y, 10), Quaternion.identity);
+        float a = Random.Range(10, 20);
+        float b = Random.Range(-6, 2);
+        yield return new WaitForSeconds(cooktime);
+        if (rawFoodName == "blobraw1")
+        {
+            Transform clone = Instantiate(cooked1, new Vector3(x, y, 10), Quaternion.identity);
+            yield return new WaitForSeconds(burntime);
+            if (level == "easy") {
+            }
+            // medium or hard level
+            else {
+                Destroy(clone.gameObject);
+                clone = Instantiate(burned1, new Vector3(a, b, 10), Quaternion.identity);
+            }
         }
         else if (rawFoodName== "blobraw2") {
-            food1 = Instantiate(cooked2, new Vector3(x, y, 10), Quaternion.identity);
-
+            Transform clone = Instantiate(cooked2, new Vector3(x, y, 10), Quaternion.identity);
+            yield return new WaitForSeconds(burntime);
+            if (level == "easy") {
+            }
+            // medium or hard level
+            else
+            {
+                Destroy(clone.gameObject);
+                clone = Instantiate(burned2, new Vector3(a, b, 10), Quaternion.identity);
+            }
         }
-        //StopCoroutine(cookandburn(rawFoodName, position));
-
-
-        // if doesn't get pick up by customer within the next 5 seconds, turn it to a burn food.
+        else if (rawFoodName == "blobraw3")
+        {
+            Transform clone = Instantiate(cooked3, new Vector3(x, y, 10), Quaternion.identity);
+            yield return new WaitForSeconds(burntime);
+            if (level == "easy")
+            {
+            }
+            // medium or hard level
+            else
+            {
+                Destroy(clone.gameObject);
+                clone = Instantiate(burned2, new Vector3(a, b, 10), Quaternion.identity);
+            }
+        }
+        else if (rawFoodName == "blobraw4")
+        {
+            Transform clone = Instantiate(cooked4, new Vector3(x, y, 10), Quaternion.identity);
+            yield return new WaitForSeconds(burntime);
+            if (level == "easy")
+            {
+            }
+            // medium or hard level
+            else
+            {
+                Destroy(clone.gameObject);
+                clone = Instantiate(burned2, new Vector3(a, b, 10), Quaternion.identity);
+            }
+        }
+        else if (rawFoodName == "blobraw5")
+        {
+            Transform clone = Instantiate(cooked5, new Vector3(x, y, 10), Quaternion.identity);
+            yield return new WaitForSeconds(burntime);
+            if (level == "easy")
+            {
+            }
+            // medium or hard level
+            else
+            {
+                Destroy(clone.gameObject);
+                clone = Instantiate(burned2, new Vector3(a, b, 10), Quaternion.identity);
+            }
+        }
     }
 
-    public IEnumerator DestroyObjects(GameObject[] list) {
-        yield return new WaitForSeconds(1);
-        for (int i = 0; i < list.Length; i++) {
-            Destroy(list[i]);
-        }
-
-    }
 }
