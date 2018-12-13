@@ -1,5 +1,5 @@
 # KBlobbq
-A 2D time management, cooking simulation game.
+A 2D time management, cooking simulation game developed on Unity Game Engine.
 
 ## Check out the game!
 https://korozini.itch.io/kblobbq
