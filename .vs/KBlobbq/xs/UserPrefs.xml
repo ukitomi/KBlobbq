@@ -2,10 +2,11 @@
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/MenuControl.cs">
     <Files>
-      <File FileName="Assets/TakeControl.cs" Line="53" Column="36" />
-      <File FileName="Assets/customerOrder.cs" Line="20" Column="33" />
-      <File FileName="Assets/MenuControl.cs" Line="62" Column="42" />
-      <File FileName="Assets/EndingMenu.cs" Line="26" Column="45" />
+      <File FileName="Assets/TakeControl.cs" Line="165" Column="26" />
+      <File FileName="Assets/customerOrder.cs" Line="135" Column="1" />
+      <File FileName="Assets/MenuControl.cs" Line="66" Column="91" />
+      <File FileName="Assets/EndingMenu.cs" Line="20" Column="13" />
+      <File FileName="Assets/Splash.cs" Line="16" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

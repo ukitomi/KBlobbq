@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuControl : MonoBehaviour {
 
+    public Transform title;
     public Transform beginner;
     public Transform intermediate;
     public Transform expert;
@@ -12,14 +13,20 @@ public class MenuControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Screen.SetResolution(1440, 900, true);
-
-	}
+        option = "";
+        //Screen.SetResolution(720, 480, false);
+        //float screenRatio = Camera.main.orthographicSize / (480f / 720f);
+        //camera.orthographicSize = screenRatio * (Camera.getheight / camera.GetScreenWidth());
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (Input.GetKeyDown("space"))
+        {
+            SceneManager.LoadScene("Game");
+        }
+
+    }
 
     public void OnMouseDown()
     {
@@ -30,42 +37,39 @@ public class MenuControl : MonoBehaviour {
         // 
         if (option == "beginner")
         {
-            SceneManager.LoadScene("Game");
-            customerOrder.interval = 3;
-            customerOrder.totaltime = 30;
+            title.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("rules");
+            customerOrder.interval = 4;
+            customerOrder.totaltime = 60;
             customerOrder.nextTime = 0;
             TakeControl.cooktime = 2;
             TakeControl.burntime = 5;
             TakeControl.level = "easy";
-            option = "";
         }
         // medium level
         // burn blobs will spawn on the side plate
         // 
         else if (option == "intermediate")
         {
-            SceneManager.LoadScene("Game");
-            customerOrder.interval = 5;
-            customerOrder.totaltime = 30;
+            title.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("rules");
+            customerOrder.interval = 3;
+            customerOrder.totaltime = 75;
             customerOrder.nextTime = 0;
             TakeControl.cooktime = 3;
-            TakeControl.burntime = 3;
+            TakeControl.burntime = 4;
             TakeControl.level = "medium";
-            option = "";
         }
         // hard level
         // burn blobs will spawn on the side plate
         // blobs will also switch places every .... x seconds?
         else if (option == "expert")
         {
-            SceneManager.LoadScene("Game");
-            customerOrder.interval = 5;
-            customerOrder.totaltime = 30;
+            title.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("rules");
+            customerOrder.interval = 3;
+            customerOrder.totaltime = 90;
             customerOrder.nextTime = 0;
             TakeControl.cooktime = 3;
             TakeControl.burntime = 3;
             TakeControl.level = "hard";
-            option = "";
             TakeControl.list = new List<string>();
             TakeControl.list.Add("redblobcooked");
             TakeControl.list.Add("pinkblobcooked");

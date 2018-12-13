@@ -40,6 +40,7 @@ public class TakeControl : MonoBehaviour {
     public static float cooktime;
     public static float burntime;
     public static string level;
+    public static int burned;
 
     // hard level list
     public static List<string> list;
@@ -85,26 +86,31 @@ public class TakeControl : MonoBehaviour {
         if (gameObject.name == "blobraw1") {
             StartCoroutine(cookandburn("blobraw1"));
             gameObject.GetComponent<AudioSource>().Play();
+            //clicked++;
         }
         // food item 2
         else if (gameObject.name == "blobraw2") {
             StartCoroutine(cookandburn("blobraw2"));
             gameObject.GetComponent<AudioSource>().Play();
+            //clicked++;
         }
         else if (gameObject.name == "blobraw3")
         {
             StartCoroutine(cookandburn("blobraw3"));
             gameObject.GetComponent<AudioSource>().Play();
+            //clicked++;
         }
         else if (gameObject.name == "blobraw4")
         {
             StartCoroutine(cookandburn("blobraw4"));
             gameObject.GetComponent<AudioSource>().Play();
+            //clicked++;
         }
         else if (gameObject.name == "blobraw5")
         {
             StartCoroutine(cookandburn("blobraw5"));
             gameObject.GetComponent<AudioSource>().Play();
+            //clicked++;
         }
         else if (gameObject.name.Contains("blobcooked1")) {
             if(corder.SearchandRemove(gameObject)) {
@@ -143,7 +149,7 @@ public class TakeControl : MonoBehaviour {
         float x = Random.Range(MinX, MaxX);
         float y = Random.Range(MinY, MaxY);
 
-        float a = Random.Range(10, 20);
+        float a = Random.Range(6, 13);
         float b = Random.Range(-6, 2);
         yield return new WaitForSeconds(cooktime);
         if (rawFoodName == "blobraw1")
@@ -156,6 +162,7 @@ public class TakeControl : MonoBehaviour {
             else {
                 Destroy(clone.gameObject);
                 clone = Instantiate(burned1, new Vector3(a, b, 10), Quaternion.identity);
+                burned++;
             }
         }
         else if (rawFoodName== "blobraw2") {
@@ -168,6 +175,7 @@ public class TakeControl : MonoBehaviour {
             {
                 Destroy(clone.gameObject);
                 clone = Instantiate(burned2, new Vector3(a, b, 10), Quaternion.identity);
+                burned++;
             }
         }
         else if (rawFoodName == "blobraw3")
@@ -182,6 +190,7 @@ public class TakeControl : MonoBehaviour {
             {
                 Destroy(clone.gameObject);
                 clone = Instantiate(burned2, new Vector3(a, b, 10), Quaternion.identity);
+                burned++;
             }
         }
         else if (rawFoodName == "blobraw4")
@@ -196,6 +205,7 @@ public class TakeControl : MonoBehaviour {
             {
                 Destroy(clone.gameObject);
                 clone = Instantiate(burned2, new Vector3(a, b, 10), Quaternion.identity);
+                burned++;
             }
         }
         else if (rawFoodName == "blobraw5")
@@ -210,6 +220,7 @@ public class TakeControl : MonoBehaviour {
             {
                 Destroy(clone.gameObject);
                 clone = Instantiate(burned2, new Vector3(a, b, 10), Quaternion.identity);
+                burned++;
             }
         }
     }

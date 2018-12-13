@@ -10,6 +10,7 @@ public class customerOrder : MonoBehaviour {
     public List<List<GameObject>> allOrders;
     //public int totaltime = 20;
     public Transform score;
+    public Transform timer;
 
     private bool slot0;
     private bool slot1;
@@ -18,7 +19,8 @@ public class customerOrder : MonoBehaviour {
 
     public static float interval;
     public static float nextTime;
-    public float time;
+    private float time;
+    private int timerCount;
     public static float totaltime;
     public static int customerServed;
     public static int playerscore;
@@ -35,6 +37,9 @@ public class customerOrder : MonoBehaviour {
         slot3 = false;
         playerscore = 0;
         customerServed = 0;
+        timerCount = (int)totaltime;
+        StartCoroutine(LoseTime());
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
@@ -48,11 +53,11 @@ public class customerOrder : MonoBehaviour {
             // need to make sure that on the spawn order, uncheck the boolean associate with the slot.
             // whenever you remove a list, turn one of the boolean off (starting from top if it's in true state?)
             if (!slot0) {
-                allOrders[0] = SpawnOrder(-8);
+                allOrders[0] = SpawnOrder(-6);
                 slot0 = true;
             }
             else if (!slot1) {
-                allOrders[1] = SpawnOrder(0);
+                allOrders[1] = SpawnOrder(1);
                 slot1 = true;
             }
             else if (!slot2) {
@@ -60,7 +65,7 @@ public class customerOrder : MonoBehaviour {
                 slot2 = true;
             }
             else if (!slot3) {
-                allOrders[3] = SpawnOrder(16);
+                allOrders[3] = SpawnOrder(15);
                 slot3 = true;
             }
         }
@@ -68,6 +73,7 @@ public class customerOrder : MonoBehaviour {
             SceneManager.LoadScene("EndingMenu");
         }
         score.GetComponent<TextMesh>().text = "Player Score: " + playerscore;
+        timer.GetComponent<TextMesh>().text = "Timer: " + timerCount;
     }
 
     public bool SearchandRemove(GameObject obj) {
@@ -93,7 +99,7 @@ public class customerOrder : MonoBehaviour {
                             slot3 = false;
                         }
                         playerscore += 5;
-                        customerServed = 1;
+                        customerServed++;
 
                     }
                     return true;
@@ -117,4 +123,14 @@ public class customerOrder : MonoBehaviour {
         }
         return orderItems;
     }
+
+    IEnumerator LoseTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            timerCount--;
+        }
+    }
+
 }

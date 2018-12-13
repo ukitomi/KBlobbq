@@ -141,7 +141,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &120358864
 MonoBehaviour:
@@ -164,9 +164,9 @@ MonoBehaviour:
   cooked3: {fileID: 288266797}
   cooked4: {fileID: 1927242063}
   cooked5: {fileID: 463427419}
-  burned1: {fileID: 120358863}
+  burned1: {fileID: 1691404632}
   burned2: {fileID: 1956788411}
-  burned3: {fileID: 0}
+  burned3: {fileID: 120358863}
   burned4: {fileID: 998921324}
   burned5: {fileID: 193760202}
   gm: {fileID: 0}
@@ -350,11 +350,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 130983279}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.5, y: -4, z: 0}
+  m_LocalPosition: {x: -13, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &130983284
 AudioSource:
@@ -461,7 +461,7 @@ GameObject:
   - component: {fileID: 156999443}
   - component: {fileID: 156999442}
   m_Layer: 0
-  m_Name: diningcountertest
+  m_Name: table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -520,8 +520,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 156999441}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.056, y: 0.1, z: 0}
-  m_LocalScale: {x: 6.951836, y: -5.3939013, z: 1}
+  m_LocalPosition: {x: 0.45, y: 0.18, z: 0}
+  m_LocalScale: {x: 3.2478979, y: -3.7595494, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -564,11 +564,11 @@ MonoBehaviour:
   cooked3: {fileID: 288266797}
   cooked4: {fileID: 1927242063}
   cooked5: {fileID: 463427419}
-  burned1: {fileID: 193760202}
+  burned1: {fileID: 1691404632}
   burned2: {fileID: 1956788411}
   burned3: {fileID: 120358863}
   burned4: {fileID: 998921324}
-  burned5: {fileID: 0}
+  burned5: {fileID: 193760202}
   gm: {fileID: 0}
   corder: {fileID: 0}
   MinX: -7
@@ -632,7 +632,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &249437969
 GameObject:
@@ -784,10 +784,10 @@ Transform:
   m_GameObject: {fileID: 288266796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.2, y: -13.41, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &288266798
 BoxCollider2D:
@@ -832,7 +832,7 @@ MonoBehaviour:
   raw5: {fileID: 1325251181}
   cooked1: {fileID: 1165237268}
   cooked2: {fileID: 321043826}
-  cooked3: {fileID: 0}
+  cooked3: {fileID: 288266797}
   cooked4: {fileID: 1927242063}
   cooked5: {fileID: 463427419}
   burned1: {fileID: 1691404632}
@@ -964,10 +964,10 @@ Transform:
   m_GameObject: {fileID: 321043824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.43, y: -12.69, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &321043828
 BoxCollider2D:
@@ -1055,7 +1055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allBlobs: []
   score: {fileID: 1471136297}
-  time: 0
+  timer: {fileID: 1194596970}
 --- !u!4 &356737941
 Transform:
   m_ObjectHideFlags: 0
@@ -1138,11 +1138,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 455731855}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.23, y: -1.87, z: 0}
-  m_LocalScale: {x: 1.9207346, y: 1.6436905, z: 1}
+  m_LocalPosition: {x: 9.38, y: -2.09, z: 0}
+  m_LocalScale: {x: 1.4251851, y: 1.4842525, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &463427418
 GameObject:
@@ -1170,10 +1170,10 @@ Transform:
   m_GameObject: {fileID: 463427418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.2, y: -13.41, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &463427420
 BoxCollider2D:
@@ -1323,7 +1323,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 800
+  far clip plane: 1000
   field of view: 60
   orthographic: 1
   orthographic size: 10
@@ -1459,11 +1459,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 621515204}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.5, y: 5, z: 0}
+  m_LocalPosition: {x: -13, y: 5.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &621515208
 BoxCollider2D:
@@ -1654,11 +1654,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 742794263}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: -1, z: 1}
-  m_LocalScale: {x: 2.1148896, y: 2.4482186, z: 1}
+  m_LocalPosition: {x: -3.718, y: -0.397, z: 1}
+  m_LocalScale: {x: 1.8462987, y: 2.3380487, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &998921323
 GameObject:
@@ -1688,7 +1688,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &998921325
 MonoBehaviour:
@@ -1711,10 +1711,10 @@ MonoBehaviour:
   cooked3: {fileID: 288266797}
   cooked4: {fileID: 1927242063}
   cooked5: {fileID: 463427419}
-  burned1: {fileID: 998921324}
+  burned1: {fileID: 1691404632}
   burned2: {fileID: 1956788411}
   burned3: {fileID: 120358863}
-  burned4: {fileID: 0}
+  burned4: {fileID: 998921324}
   burned5: {fileID: 193760202}
   gm: {fileID: 0}
   corder: {fileID: 0}
@@ -1840,10 +1840,10 @@ Transform:
   m_GameObject: {fileID: 1165237266}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.2, y: -13.41, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1165237269
 BoxCollider2D:
@@ -1902,6 +1902,92 @@ MonoBehaviour:
   MaxX: 3
   MinY: -7
   MaxY: 3
+--- !u!1 &1194596966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1194596970}
+  - component: {fileID: 1194596969}
+  - component: {fileID: 1194596968}
+  m_Layer: 0
+  m_Name: timer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!102 &1194596968
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1194596966}
+  m_Text: Timer
+  m_OffsetZ: 0
+  m_CharacterSize: 1
+  m_LineSpacing: 1
+  m_Anchor: 0
+  m_Alignment: 0
+  m_TabSize: 4
+  m_FontSize: 0
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 0}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
+--- !u!23 &1194596969
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1194596966}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!4 &1194596970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1194596966}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10, y: -8, z: -0.09137894}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1325251177
 GameObject:
   m_ObjectHideFlags: 0
@@ -2031,11 +2117,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1325251177}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.5, y: -7, z: 0}
+  m_LocalPosition: {x: -13, y: -6.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1325251182
 AudioSource:
@@ -2212,11 +2298,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1471136293}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: -8, z: -0.09137894}
+  m_LocalPosition: {x: 5, y: -8, z: -0.09137894}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1610894391
 GameObject:
@@ -2322,11 +2408,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1610894391}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.5, y: 2, z: 0}
+  m_LocalPosition: {x: -13, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1610894395
 BoxCollider2D:
@@ -2522,7 +2608,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1691404633
 MonoBehaviour:
@@ -2685,11 +2771,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1746416547}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.5, y: -1, z: 0}
+  m_LocalPosition: {x: -13, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1746416552
 AudioSource:
@@ -2812,10 +2898,10 @@ Transform:
   m_GameObject: {fileID: 1927242062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.2, y: -13.41, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1927242064
 BoxCollider2D:
@@ -2989,7 +3075,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1943409981}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.217, y: -1.478, z: 0}
+  m_LocalPosition: {x: -2.69, y: -2.18, z: 0}
   m_LocalScale: {x: 2.0981522, y: 2.0937517, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3023,7 +3109,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1956788412
 MonoBehaviour:
@@ -3046,8 +3132,8 @@ MonoBehaviour:
   cooked3: {fileID: 288266797}
   cooked4: {fileID: 1927242063}
   cooked5: {fileID: 463427419}
-  burned1: {fileID: 1956788411}
-  burned2: {fileID: 0}
+  burned1: {fileID: 1691404632}
+  burned2: {fileID: 1956788411}
   burned3: {fileID: 120358863}
   burned4: {fileID: 998921324}
   burned5: {fileID: 193760202}
